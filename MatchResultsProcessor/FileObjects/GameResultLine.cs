@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MatchResultsProcessor.FileObjects
 {
-    public class GameResultsLine : IFileObject
+    public class GameResultLine : IFileObject
     {
         public string GameResult { get; set; }
     }

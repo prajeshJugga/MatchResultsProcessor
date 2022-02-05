@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MatchResultsProcessor.Interfaces
 {
-    internal interface IFileObject
+    public interface IFileObject
     {
     }
 }

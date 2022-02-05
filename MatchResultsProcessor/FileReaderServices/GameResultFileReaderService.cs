@@ -8,12 +8,12 @@ using System.Text;
 
 namespace MatchResultsProcessor.FileReaderServices
 {
-    public class GameResultFileReaderService : IFileReader<GameResultsLine> // where T : IFileObject
+    public class GameResultFileReaderService : IFileReader<GameResultLine> // where T : IFileObject
     {
-        public List<GameResultsLine> GetFileObjects(string FilePath)
+        public List<GameResultLine> GetFileObjects(string FilePath)
         {
             return File.ReadAllLines(FilePath)
-                       .Select(i => new GameResultsLine() { GameResult = i.Trim() })
+                       .Select(i => new GameResultLine() { GameResult = i.Trim() })
                        .ToList();
         }
     }
