@@ -27,7 +27,12 @@ namespace FileProcessorTests
             Assert.AreEqual(expectedResults.Count, gameDetailsList.Count);
             for (int i = 0; i < gameDetailsList.Count; i++)
             {
-                Assert.AreEqual(expectedResults[i], gameResultLines[i]);
+                Assert.AreEqual(expectedResults[i].TeamA.TeamName, gameDetailsList[i].TeamA.TeamName);
+                Assert.AreEqual(expectedResults[i].TeamA.GoalsScored, gameDetailsList[i].TeamA.GoalsScored);
+
+                Assert.AreEqual(expectedResults[i].TeamB.TeamName, gameDetailsList[i].TeamB.TeamName);
+                Assert.AreEqual(expectedResults[i].TeamB.GoalsScored, gameDetailsList[i].TeamB.GoalsScored);
+
             }
         }
 
