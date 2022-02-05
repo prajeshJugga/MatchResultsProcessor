@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MatchResultsProcessor.Interfaces
 {
-    internal interface IFileReader
+    internal interface IFileReader<FileObject> where FileObject : IFileObject
     {
-        List<IFileObject> GetFileObjects();
+        List<FileObject> GetFileObjects(string FilePath);
     }
 }
