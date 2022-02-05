@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Folder Include="DTOs\" />
+    <Folder Include="FileProcessorService\" />
   </ItemGroup>
 
 </Project>

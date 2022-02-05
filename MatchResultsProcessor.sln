@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatchResultsProcessor", "MatchResultsProcessor\MatchResultsProcessor.csproj", "{C0A503AE-E70A-4FC7-BE43-6D2A149F3E31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileReaderTests", "FileReaderTests\FileReaderTests.csproj", "{5D3BFC42-799A-4726-986F-FDFA05865044}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C0A503AE-E70A-4FC7-BE43-6D2A149F3E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A503AE-E70A-4FC7-BE43-6D2A149F3E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A503AE-E70A-4FC7-BE43-6D2A149F3E31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3BFC42-799A-4726-986F-FDFA05865044}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3BFC42-799A-4726-986F-FDFA05865044}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3BFC42-799A-4726-986F-FDFA05865044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3BFC42-799A-4726-986F-FDFA05865044}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
