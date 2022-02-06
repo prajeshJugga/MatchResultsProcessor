@@ -20,88 +20,88 @@ namespace FileProcessorTests
             // Arrange
             GameResultProcessor gameResultProcessor = new GameResultProcessor();
             List<GameResultLine> gameResultLines = GetGameResultLines();
-            List<GameDetailsDTO> expectedResults = GetExpectedResults();
+            List<GameResultDTO> expectedResults = GetExpectedResults();
             // Act
-            List<GameDetailsDTO> gameDetailsList = gameResultProcessor.ProcessFile(gameResultLines);
+            List<GameResultDTO> gameDetailsList = gameResultProcessor.ProcessFile(gameResultLines);
             // Assert
             Assert.AreEqual(expectedResults.Count, gameDetailsList.Count);
             for (int i = 0; i < gameDetailsList.Count; i++)
             {
-                Assert.AreEqual(expectedResults[i].TeamA.TeamName, gameDetailsList[i].TeamA.TeamName);
+                Assert.AreEqual(expectedResults[i].TeamA.Team.Name, gameDetailsList[i].TeamA.Team.Name);
                 Assert.AreEqual(expectedResults[i].TeamA.GoalsScored, gameDetailsList[i].TeamA.GoalsScored);
 
-                Assert.AreEqual(expectedResults[i].TeamB.TeamName, gameDetailsList[i].TeamB.TeamName);
+                Assert.AreEqual(expectedResults[i].TeamB.Team.Name, gameDetailsList[i].TeamB.Team.Name);
                 Assert.AreEqual(expectedResults[i].TeamB.GoalsScored, gameDetailsList[i].TeamB.GoalsScored);
 
             }
         }
 
-        private List<GameDetailsDTO> GetExpectedResults()
+        private List<GameResultDTO> GetExpectedResults()
         {
-            return new List<GameDetailsDTO>
+            return new List<GameResultDTO>
             {
-                new GameDetailsDTO
+                new GameResultDTO
                 {
                      TeamA = new TeamStatisticDTO
                      {
-                         TeamName = "Lions",
+                         Team = new TeamDTO { Name = "Lions" },
                          GoalsScored = 3
                      },
                      TeamB = new TeamStatisticDTO
                      {
-                         TeamName = "Snakes",
+                         Team = new TeamDTO { Name = "Snakes" },
                          GoalsScored = 3
                      }
                 },
-                new GameDetailsDTO
+                new GameResultDTO
                 {
                      TeamA = new TeamStatisticDTO
                      {
-                         TeamName = "Tarantulas",
+                         Team = new TeamDTO { Name = "Tarantulas" },
                          GoalsScored = 1
                      },
                      TeamB = new TeamStatisticDTO
                      {
-                         TeamName = "FC Awesome",
+                         Team = new TeamDTO { Name = "FC Awesome" },
                          GoalsScored = 0
                      }
                 },
-                new GameDetailsDTO
+                new GameResultDTO
                 {
                      TeamA = new TeamStatisticDTO
                      {
-                         TeamName = "Lions",
+                         Team = new TeamDTO { Name = "Lions" },
                          GoalsScored = 1
                      },
                      TeamB = new TeamStatisticDTO
                      {
-                         TeamName = "FC Awesome",
+                         Team = new TeamDTO { Name = "FC Awesome" },
                          GoalsScored = 1
                      }
                 },
-                new GameDetailsDTO
+                new GameResultDTO
                 {
                      TeamA = new TeamStatisticDTO
                      {
-                         TeamName = "Tarantulas",
+                         Team = new TeamDTO { Name ="Tarantulas" },
                          GoalsScored = 3
                      },
                      TeamB = new TeamStatisticDTO
                      {
-                         TeamName = "Snakes",
+                         Team = new TeamDTO { Name ="Snakes" },
                          GoalsScored = 1
                      }
                 },
-                new GameDetailsDTO
+                new GameResultDTO
                 {
                      TeamA = new TeamStatisticDTO
                      {
-                         TeamName = "Lions",
+                         Team = new TeamDTO { Name ="Lions" },
                          GoalsScored = 4
                      },
                      TeamB = new TeamStatisticDTO
                      {
-                         TeamName = "Grouches",
+                         Team = new TeamDTO { Name ="Grouches" },
                          GoalsScored = 0
                      }
                 }

@@ -17,8 +17,8 @@ namespace LeagueCalculatorTests
         public void Successfully_Calculates_League_Table_Correctly()
         {
             // Arrange
-            ILeagueTableCalculator<GameDetailsDTO, SimpleLeagueTableRowDTO> simpleLeagueTableCalculator = new SimpleLeagueTableCalculator();
-            List<GameDetailsDTO> gameDetails = new List<GameDetailsDTO>();
+            ILeagueTableCalculator<GameResultDTO, SimpleLeagueTableRowDTO> simpleLeagueTableCalculator = new SimpleLeagueTableCalculator();
+            List<GameResultDTO> gameDetails = new List<GameResultDTO>();
             List<SimpleLeagueTableRowDTO> expectedLeagueTable = GetExpectedLeagueTable();
             // Act
             List<SimpleLeagueTableRowDTO> calculatedLeagueTable = simpleLeagueTableCalculator.GetLeagueTable(gameDetails);

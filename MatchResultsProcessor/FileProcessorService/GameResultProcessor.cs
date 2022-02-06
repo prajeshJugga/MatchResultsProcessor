@@ -8,15 +8,15 @@ using System.Text;
 
 namespace MatchResultsProcessor.FileProcessorService
 {
-    public class GameResultProcessor : IFileProcessorService<GameResultLine, GameDetailsDTO>
+    public class GameResultProcessor : IFileProcessorService<GameResultLine, GameResultDTO>
     {
-        public List<GameDetailsDTO> ProcessFile(List<GameResultLine> inputObjects)
+        public List<GameResultDTO> ProcessFile(List<GameResultLine> inputObjects)
         {
-            List<GameDetailsDTO> gameDetailsDTOs = new List<GameDetailsDTO>();
+            List<GameResultDTO> gameDetailsDTOs = new List<GameResultDTO>();
             foreach (var inputLine in inputObjects)
             {
                 string[] teamResultStrings = GetTeamResultStrings(inputLine);
-                gameDetailsDTOs.Add(new GameDetailsDTO { TeamA = GetTeamStatisticDTO(teamResultStrings.First()), TeamB = GetTeamStatisticDTO(teamResultStrings.Last()) });
+                gameDetailsDTOs.Add(new GameResultDTO { TeamA = GetTeamStatisticDTO(teamResultStrings.First()), TeamB = GetTeamStatisticDTO(teamResultStrings.Last()) });
             }
             return gameDetailsDTOs;
         }
@@ -30,7 +30,7 @@ namespace MatchResultsProcessor.FileProcessorService
         {
             return new TeamStatisticDTO
             {
-                TeamName = GetTeamName(teamResult),
+                Team = new TeamDTO { Name = GetTeamName(teamResult) },
                 GoalsScored = GetGoalsScored(teamResult)
             };
         }

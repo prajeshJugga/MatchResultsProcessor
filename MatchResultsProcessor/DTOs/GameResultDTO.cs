@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MatchResultsProcessor.DTOs
 {
-    public class GameDetailsDTO: IDto
+    public class GameResultDTO: IDto
     {
         public TeamStatisticDTO TeamA { get; set; }
         public TeamStatisticDTO TeamB { get; set; }
