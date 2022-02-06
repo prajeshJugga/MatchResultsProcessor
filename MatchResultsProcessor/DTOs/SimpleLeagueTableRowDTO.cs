@@ -4,9 +4,8 @@ using System.Text;
 
 namespace MatchResultsProcessor.DTOs
 {
-    public class TeamStatisticDTO
+    public class SimpleLeagueTableRowDTO : LeagueTableRowDTO
     {
-        public TeamDTO Team { get; set; }
-        public int GoalsScored { get; set; }
+
     }
 }
