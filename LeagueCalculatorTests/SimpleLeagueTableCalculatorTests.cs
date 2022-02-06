@@ -1,4 +1,6 @@
 using MatchResultsProcessor.DTOs;
+using MatchResultsProcessor.Enums;
+using MatchResultsProcessor.GameResultProcessors;
 using MatchResultsProcessor.Interfaces;
 using NUnit.Framework;
 using System;
@@ -17,19 +19,110 @@ namespace LeagueCalculatorTests
         public void Successfully_Calculates_League_Table_Correctly()
         {
             // Arrange
-            ILeagueTableCalculator<GameResultDTO, SimpleLeagueTableRowDTO> simpleLeagueTableCalculator = new SimpleLeagueTableCalculator();
-            List<GameResultDTO> gameDetails = new List<GameResultDTO>();
+            GamePoints standardGamePoints = new GamePoints
+            {
+                WinningPoints = 3,
+                DrawingPoints = 1,
+                LosingPoints = 0
+            };
+            SimpleGameResultCalculator simpleGameResultCalculator = new SimpleGameResultCalculator();
+            ILeagueTableCalculator<GameResultDTO, SimpleLeagueTableRowDTO> simpleLeagueTableCalculator = new SimpleLeagueTableCalculator(simpleGameResultCalculator, standardGamePoints);
+            List<GameResultDTO> gameDetails = GetInputGameResults();
             List<SimpleLeagueTableRowDTO> expectedLeagueTable = GetExpectedLeagueTable();
             // Act
             List<SimpleLeagueTableRowDTO> calculatedLeagueTable = simpleLeagueTableCalculator.GetLeagueTable(gameDetails);
+            simpleLeagueTableCalculator.GetLeagueTable(gameDetails);
             // Assert
             Assert.AreEqual(expectedLeagueTable.Count, calculatedLeagueTable.Count);
-            for (int i = 0; i < expectedLeagueTable.Count; i++)
+            for (int i = 0; i < calculatedLeagueTable.Count; i++)
             {
+                Console.WriteLine(i + 1 + ". " + calculatedLeagueTable[i].TeamName + ", " + calculatedLeagueTable[i].Points + " pts");
                 Assert.AreEqual(expectedLeagueTable[i].TeamName, calculatedLeagueTable[i].TeamName);
                 Assert.AreEqual(expectedLeagueTable[i].Points, calculatedLeagueTable[i].Points);
-                Assert.AreEqual(expectedLeagueTable[i].LeaguePosition, calculatedLeagueTable[i].LeaguePosition);
+                // Assert.AreEqual(expectedLeagueTable[i].LeaguePosition, calculatedLeagueTable[i].LeaguePosition);
             }
+        }
+
+        private List<GameResultDTO> GetInputGameResults()
+        {
+            return new List<GameResultDTO>
+            {
+                new GameResultDTO
+                {
+                     TeamA = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name = "Lions" },
+                         GoalsScored = 3,
+                         TeamResult = TeamResult.DRAW
+                     },
+                     TeamB = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name = "Snakes" },
+                         GoalsScored = 3,
+                         TeamResult = TeamResult.DRAW
+                     }
+                },
+                new GameResultDTO
+                {
+                     TeamA = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name = "Tarantulas" },
+                         GoalsScored = 1,
+                         TeamResult = TeamResult.WIN
+                     },
+                     TeamB = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name = "FC Awesome" },
+                         GoalsScored = 0,
+                         TeamResult = TeamResult.LOSS
+                     }
+                },
+                new GameResultDTO
+                {
+                     TeamA = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name = "Lions" },
+                         GoalsScored = 1,
+                         TeamResult = TeamResult.DRAW
+                     },
+                     TeamB = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name = "FC Awesome" },
+                         GoalsScored = 1,
+                         TeamResult = TeamResult.DRAW
+                     }
+                },
+                new GameResultDTO
+                {
+                     TeamA = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name ="Tarantulas" },
+                         GoalsScored = 3,
+                         TeamResult = TeamResult.WIN
+                     },
+                     TeamB = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name ="Snakes" },
+                         GoalsScored = 1,
+                         TeamResult = TeamResult.LOSS
+                     }
+                },
+                new GameResultDTO
+                {
+                     TeamA = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name ="Lions" },
+                         GoalsScored = 4,
+                         TeamResult = TeamResult.WIN
+                     },
+                     TeamB = new TeamStatisticDTO
+                     {
+                         Team = new TeamDTO { Name ="Grouches" },
+                         GoalsScored = 0,
+                         TeamResult = TeamResult.LOSS
+                     }
+                }
+            };
         }
 
         private List<SimpleLeagueTableRowDTO> GetExpectedLeagueTable()
@@ -40,31 +133,31 @@ namespace LeagueCalculatorTests
                 {
                     TeamName = "Tarantulas",
                     Points = 6,
-                    LeaguePosition = 1
+                    GamesPlayed = 1
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "Lions",
                     Points = 5,
-                    LeaguePosition = 2
+                    GamesPlayed = 2
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "FC Awesome",
                     Points = 1,
-                    LeaguePosition = 3
+                    GamesPlayed = 3
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "Snakes",
                     Points = 1,
-                    LeaguePosition = 4
+                    GamesPlayed = 4
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "Grouches",
                     Points = 0,
-                    LeaguePosition = 5
+                    GamesPlayed = 5
                 }
             };
         }

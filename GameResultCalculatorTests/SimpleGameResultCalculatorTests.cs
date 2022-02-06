@@ -21,7 +21,7 @@ namespace GameResultCalculatorTests
             List<GameResultDTO> inputGameResults = GetInputGameResults();
             List<GameResultDTO> expectedGameResults = GetExpectedResults();
             // Act
-            simpleGameResultCalculator.DetermineGameResult(expectedGameResults);
+            simpleGameResultCalculator.DetermineGameResult(inputGameResults);
             // Assert
             Assert.AreEqual(inputGameResults.Count, expectedGameResults.Count);
             for (int i = 0; i < inputGameResults.Count; i++)
