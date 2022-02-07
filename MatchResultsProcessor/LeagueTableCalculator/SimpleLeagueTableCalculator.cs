@@ -12,6 +12,7 @@ namespace LeagueCalculatorTests
     {
         private readonly IGameResultCalculator _gameResultCalculator;
         private readonly GamePoints _gamePoints;
+
         public SimpleLeagueTableCalculator(IGameResultCalculator gameResultCalculator, GamePoints gamePoints)
         {
             _gameResultCalculator = gameResultCalculator;
@@ -49,7 +50,6 @@ namespace LeagueCalculatorTests
                 if (IsTiedOnPoints(previousPoints, simpleLeagueTableRows[i]))
                 {
                     simpleLeagueTableRows[i].LeaguePosition = simpleLeagueTableRows[i - 1].LeaguePosition;
-                    Console.WriteLine("IsTiedOnPoints", simpleLeagueTableRows[i].LeaguePosition);
                 }
                 else
                 {
@@ -96,14 +96,14 @@ namespace LeagueCalculatorTests
             }
         }
 
-        private static bool IsSameTeam(GameResultDTO gameResult, TeamDTO team)
+        private bool IsSameTeam(GameResultDTO gameResult, TeamDTO team)
         {
-            return gameResult.TeamA.Team.Name.Equals(team.Name) || gameResult.TeamB.Team.Name.Equals(team.Name);
+            return IsSameTeam(gameResult.TeamA.Team, team) || IsSameTeam(gameResult.TeamB.Team, team);
         }
 
         private bool IsSameTeam(TeamDTO firstTeamToCompare, TeamDTO secondTeamToCompare)
         {
-            return firstTeamToCompare.Name.Equals(secondTeamToCompare.Name);
+            return firstTeamToCompare.Name.Equals(secondTeamToCompare.Name, StringComparison.OrdinalIgnoreCase);
         }
 
         private List<TeamDTO> GetDistinctTeams(List<GameResultDTO> gameDetailsDTOs)
@@ -116,7 +116,7 @@ namespace LeagueCalculatorTests
                 {
                     distinctTeams.Add(item.TeamA.Team);
                 }
-                else if (IsDistinctTeam(distinctTeams, item.TeamB.Team))
+                if (IsDistinctTeam(distinctTeams, item.TeamB.Team))
                 {
                     distinctTeams.Add(item.TeamB.Team);
                 }
