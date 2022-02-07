@@ -31,7 +31,6 @@ namespace LeagueCalculatorTests
             List<SimpleLeagueTableRowDTO> expectedLeagueTable = GetExpectedLeagueTable();
             // Act
             List<SimpleLeagueTableRowDTO> calculatedLeagueTable = simpleLeagueTableCalculator.GetLeagueTable(gameDetails);
-            simpleLeagueTableCalculator.GetLeagueTable(gameDetails);
             // Assert
             Assert.AreEqual(expectedLeagueTable.Count, calculatedLeagueTable.Count);
             for (int i = 0; i < calculatedLeagueTable.Count; i++)
