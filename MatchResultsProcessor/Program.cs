@@ -56,11 +56,13 @@ namespace MatchResultsProcessor
             }
             catch (ArgumentNullException)
             {
-                Console.WriteLine("No input file provided, please enter an in line argument to path to the file to process. Error ");
+                Console.WriteLine("No input file provided, please enter an in line argument to path to the file to process.");
+                _logger.Error("No input file provided, please enter an in line argument to path to the file to process.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Unable to process league table. Error ", ex.Message);
+                Console.WriteLine("Unable to process league table. Error " + ex.Message);
+                _logger.Error("Unable to process league table. Error " + ex.Message);
             }
 
         }
