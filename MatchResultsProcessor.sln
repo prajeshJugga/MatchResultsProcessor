@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueCalculatorTests", "Le
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameResultCalculatorTests", "GameResultCalculatorTests\GameResultCalculatorTests.csproj", "{CBEB88A6-EC51-47C9-8D50-CC252948D821}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileWriterTests", "FileWriterTests\FileWriterTests.csproj", "{D8E06AA4-23BE-45E8-BFC7-72C0C0FCC8BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CBEB88A6-EC51-47C9-8D50-CC252948D821}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBEB88A6-EC51-47C9-8D50-CC252948D821}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBEB88A6-EC51-47C9-8D50-CC252948D821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8E06AA4-23BE-45E8-BFC7-72C0C0FCC8BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E06AA4-23BE-45E8-BFC7-72C0C0FCC8BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E06AA4-23BE-45E8-BFC7-72C0C0FCC8BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E06AA4-23BE-45E8-BFC7-72C0C0FCC8BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

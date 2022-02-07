@@ -6,6 +6,5 @@ namespace MatchResultsProcessor.DTOs
 {
     public class SimpleLeagueTableRowDTO : LeagueTableRowDTO
     {
-
     }
 }

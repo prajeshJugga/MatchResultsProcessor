@@ -36,10 +36,10 @@ namespace LeagueCalculatorTests
             Assert.AreEqual(expectedLeagueTable.Count, calculatedLeagueTable.Count);
             for (int i = 0; i < calculatedLeagueTable.Count; i++)
             {
-                Console.WriteLine(i + 1 + ". " + calculatedLeagueTable[i].TeamName + ", " + calculatedLeagueTable[i].Points + " pts");
+                Console.WriteLine(calculatedLeagueTable[i].LeaguePosition + ". " + calculatedLeagueTable[i].TeamName + ", " + calculatedLeagueTable[i].Points + " pts");
                 Assert.AreEqual(expectedLeagueTable[i].TeamName, calculatedLeagueTable[i].TeamName);
                 Assert.AreEqual(expectedLeagueTable[i].Points, calculatedLeagueTable[i].Points);
-                // Assert.AreEqual(expectedLeagueTable[i].LeaguePosition, calculatedLeagueTable[i].LeaguePosition);
+                Assert.AreEqual(expectedLeagueTable[i].LeaguePosition, calculatedLeagueTable[i].LeaguePosition);
             }
         }
 
@@ -133,31 +133,36 @@ namespace LeagueCalculatorTests
                 {
                     TeamName = "Tarantulas",
                     Points = 6,
-                    GamesPlayed = 1
+                    GamesPlayed = 1,
+                    LeaguePosition = 1
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "Lions",
                     Points = 5,
-                    GamesPlayed = 2
+                    GamesPlayed = 2,
+                    LeaguePosition = 2
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "FC Awesome",
                     Points = 1,
-                    GamesPlayed = 3
+                    GamesPlayed = 3,
+                    LeaguePosition = 3
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "Snakes",
                     Points = 1,
-                    GamesPlayed = 4
+                    GamesPlayed = 4,
+                    LeaguePosition = 3
                 },
                 new SimpleLeagueTableRowDTO
                 {
                     TeamName = "Grouches",
                     Points = 0,
-                    GamesPlayed = 5
+                    GamesPlayed = 5,
+                    LeaguePosition = 5
                 }
             };
         }

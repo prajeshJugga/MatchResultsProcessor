@@ -2,6 +2,7 @@
 using MatchResultsProcessor.Enums;
 using MatchResultsProcessor.GameResultProcessors;
 using MatchResultsProcessor.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,7 +36,33 @@ namespace LeagueCalculatorTests
                 }
                 leagueTableRows.Add(leagueTableRow);
             }
-            return leagueTableRows.OrderByDescending(i => i.Points).ThenBy(i => i.TeamName).ToList();
+            return GetSortedLeagueTable(leagueTableRows);
+        }
+
+        private List<SimpleLeagueTableRowDTO> GetSortedLeagueTable(List<SimpleLeagueTableRowDTO> leagueTableRows)
+        {
+            List<SimpleLeagueTableRowDTO> simpleLeagueTableRows = leagueTableRows.OrderByDescending(i => i.Points).ThenBy(i => i.TeamName).ToList();
+            double previousPoints = 0;
+
+            for (int i = 0; i < simpleLeagueTableRows.Count; i++)
+            {
+                if (IsTiedOnPoints(previousPoints, simpleLeagueTableRows[i]))
+                {
+                    simpleLeagueTableRows[i].LeaguePosition = simpleLeagueTableRows[i - 1].LeaguePosition;
+                    Console.WriteLine("IsTiedOnPoints", simpleLeagueTableRows[i].LeaguePosition);
+                }
+                else
+                {
+                    simpleLeagueTableRows[i].LeaguePosition = i + 1;
+                }
+                previousPoints = simpleLeagueTableRows[i].Points;
+            }
+            return simpleLeagueTableRows;
+        }
+
+        private bool IsTiedOnPoints(double previousPoints, SimpleLeagueTableRowDTO simpleLeagueTableRow)
+        {
+            return previousPoints == simpleLeagueTableRow.Points;
         }
 
         private void SetTeamPoints(TeamDTO team, GameResultDTO gameResult, SimpleLeagueTableRowDTO leagueTableRow)

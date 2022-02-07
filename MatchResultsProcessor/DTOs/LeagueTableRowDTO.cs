@@ -10,5 +10,6 @@ namespace MatchResultsProcessor.DTOs
         public string TeamName { get; set; }
         public double Points { get; set; }
         public int GamesPlayed { get; set; }
+        public int LeaguePosition { get; set; }
     }
 }
